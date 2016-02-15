@@ -1,6 +1,9 @@
 class Classifier():
 
-    """ Class that implements dummy classifier """
+    """
+    Class that implements dummy classifier.
+    Yes, I love magic constants
+    """
 
     def __init__(self):
         super(Classifier, self).__init__()
