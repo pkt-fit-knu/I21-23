@@ -1,9 +1,15 @@
 from classifier import Classifier
+from onerule import OneRuleClassifier
 
 
 def main():
     data = read_from_file(name='iris.data')
+    print("Plain classifier: ")
     classifier = Classifier(data)
+    classifier.classify(data)
+    print
+    print("1R classifier: ")
+    classifier = OneRuleClassifier(data)
     classifier.classify(data)
 
 

@@ -56,14 +56,6 @@ class Classifier():
             'diff':   current_class_max_diff,
         })
 
-        for rule in self.__rules__:
-            print(" Class is `%s`" % rule['class'])
-            for i in range(len(rule['values'])):
-                print("\trule: %.2f +- %.2f" % (
-                        rule['values'][i],
-                        rule['diff'][i]
-                    ))
-
     def classify(self, data):
         wrong_count = 0
 
@@ -72,11 +64,6 @@ class Classifier():
         def apply_rule(rule, item):
             rule_fits = True
             for i in range(len(item['vals'])):
-                print(rule_fits)
-                print("%.2f <= %.2f and %.2f >= %.2f" % (
-                    item['vals'][i], rule['values'][i] + rule['diff'][i],
-                    item['vals'][i], rule['values'][i] - rule['diff'][i]
-                ))
                 rule_fits = rule_fits and (
                     item['vals'][i] <= rule['values'][i] + rule['diff'][i] and
                     item['vals'][i] >= rule['values'][i] - rule['diff'][i]
@@ -89,13 +76,9 @@ class Classifier():
                 selected = apply_rule(rule, item)
                 if selected != __UNKNOWN__:
                     break
-            print("[%.1f %.1f %.1f %.1f] classified as %s, expected %s" % (
-                item['vals'][0], item['vals'][1],
-                item['vals'][2], item['vals'][3],
-                selected, item['class']))
+            if selected != item['class']:
+                print("classified as %s, expected %s" % (
+                        selected, item['class']))
             if selected != item['class']:
                 wrong_count += 1
-        print("Recognized wrong %i of %i" % (
-            wrong_count,
-            len(data)
-            ))
+        print("%i/%i is wrong" % (wrong_count, len(data)))
