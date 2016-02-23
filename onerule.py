@@ -114,7 +114,7 @@ class OneRuleClassifier(Classifier):
                 # But at least it's readable...
                 if (
                         value == self.__RULE__['predictor'](item) and
-                        key == correct):
+                        key != correct):
                     print("%s expected, but found %s" % (
                         correct, key
                         ))

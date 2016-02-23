@@ -77,8 +77,8 @@ class Classifier():
                 if selected != __UNKNOWN__:
                     break
             if selected != item['class']:
-                print("classified as %s, expected %s" % (
-                        selected, item['class']))
+                print("%s expected, but found %s" % (
+                        item['class'], selected))
             if selected != item['class']:
                 wrong_count += 1
         print("%i/%i is wrong" % (wrong_count, len(data)))

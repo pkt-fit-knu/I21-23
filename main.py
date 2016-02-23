@@ -4,12 +4,22 @@ from onerule import OneRuleClassifier
 
 def main():
     data = read_from_file(name='iris.data')
+
+    training_data = []
+    selector = 0
+    max_selector = 2
+    for item in data:
+        if selector >= max_selector:
+            training_data.append(item)
+            selector = 0
+        else:
+            selector += 1
     print("Plain classifier: ")
-    classifier = Classifier(data)
+    classifier = Classifier(training_data)
     classifier.classify(data)
     print
     print("1R classifier: ")
-    classifier = OneRuleClassifier(data)
+    classifier = OneRuleClassifier(training_data)
     classifier.classify(data)
 
 
