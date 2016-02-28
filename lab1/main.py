@@ -1,15 +1,21 @@
+"""A program that implements classifying data by primitive algorythms."""
+
 from classifier import Classifier
 from onerule import OneRuleClassifier
 
+# The constant that defines the count of
+# data to be passed while training classifier
+MAX_SELECTOR = 2
+
 
 def main():
+    """Main program method."""
     data = read_from_file(name='iris.data')
 
     training_data = []
     selector = 0
-    max_selector = 2
     for item in data:
-        if selector >= max_selector:
+        if selector >= MAX_SELECTOR:
             training_data.append(item)
             selector = 0
         else:
@@ -24,9 +30,7 @@ def main():
 
 
 def read_from_file(name=""):
-
-    """ Reads a csv file """
-
+    """Read a csv file."""
     data = []
     import csv
     with open(name, "r") as data_file:

@@ -1,13 +1,21 @@
-class Classifier():
+"""
+Classifier class.
 
-    """ Class that implements dummy classifier. """
+Based on simple range-based recogition.
+"""
+
+
+class Classifier():
+    """Class that implements dummy classifier."""
 
     __rules__ = []
 
     def __init__(self, training_data):
+        """Initialize classifier with training data."""
         self.train(training_data)
 
     def train(self, data):
+        """Train classifier."""
         # Init analizing variables
         current_class = data[0]["class"]
         current_class_count = 0
@@ -38,9 +46,9 @@ class Classifier():
                     current_class_values[i] /= current_class_count
 
                 self.__rules__.append({
-                    'class':  current_class,
+                    'class': current_class,
                     'values': current_class_values,
-                    'diff':   current_class_max_diff,
+                    'diff': current_class_max_diff,
                 })
                 current_class = item['class']
                 current_class_count = 1
@@ -51,12 +59,13 @@ class Classifier():
             current_class_values[i] /= current_class_count
 
         self.__rules__.append({
-            'class':  current_class,
+            'class': current_class,
             'values': current_class_values,
-            'diff':   current_class_max_diff,
+            'diff': current_class_max_diff,
         })
 
     def classify(self, data):
+        """Find class of @data."""
         wrong_count = 0
 
         __UNKNOWN__ = "Unknown"
@@ -77,8 +86,8 @@ class Classifier():
                 if selected != __UNKNOWN__:
                     break
             if selected != item['class']:
-                print("%s expected, but found %s" % (
-                        item['class'], selected))
+                print("%s expected, but found %s" %
+                      (item['class'], selected))
             if selected != item['class']:
                 wrong_count += 1
         print("%i/%i is wrong" % (wrong_count, len(data)))

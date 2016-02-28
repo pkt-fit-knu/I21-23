@@ -1,10 +1,15 @@
+"""
+Classifier class.
+
+Based on One-Rule (1R) algorythm.
+"""
+
 from classifier import Classifier
 import math
 
 
 class OneRuleClassifier(Classifier):
-
-    """Classifier that is based on one rule algorithm """
+    """Classifier that is based on one rule algorithm."""
 
     __predictors__ = [
         lambda item: math.trunc(1 * item['vals'][0] / item['vals'][1]),
@@ -16,10 +21,11 @@ class OneRuleClassifier(Classifier):
     __RULE__ = {}
 
     def __init__(self, training_data):
+        """Initialize classifier with training data."""
         self.train(training_data)
 
     def train(self, data):
-        """ Finds the most appropriate selector predictor """
+        """Find the most appropriate selector predictor."""
         rules = self.build_rules(data)
         wrong = []
         i = 0
@@ -51,9 +57,9 @@ class OneRuleClassifier(Classifier):
         self.__RULE__ = rules[least_wrong]
 
     def build_rules(self, data):
-        """ Builds rules table """
+        """Build rules table."""
         def apply_predic(predictor, data):
-            """ Creates dataset based on @data processed by @predictor """
+            """Create dataset based on @data processed by @predictor."""
             result = []
             for item in data:
                 result.append({
@@ -106,6 +112,7 @@ class OneRuleClassifier(Classifier):
         return rules
 
     def classify(self, data):
+        """Classify data and get it's class."""
         wrong = 0
         for item in data:
             correct = item['class']
@@ -116,7 +123,6 @@ class OneRuleClassifier(Classifier):
                         value == self.__RULE__['predictor'](item) and
                         key != correct):
                     print("%s expected, but found %s" % (
-                        correct, key
-                        ))
+                        correct, key))
                     wrong += 1
         print("%i/%i is wrong" % (wrong, len(data)))
