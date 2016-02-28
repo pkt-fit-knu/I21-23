@@ -1,6 +1,6 @@
-# Datamining at university
-Labs for university data mining course.
+# Image processing at university
+Labs for university image processing course.
 
 ### Labs list
 
-* [Lab 1](lab1/) - recognizing class of iris based on plain algorythms: *simple self-created one* and [One Rule](http://www.saedsayad.com/oner.htm).
+* [Lab 1](lab1/) - resizing of the picture based on manually implemented bilinear interpolation algorythm.
