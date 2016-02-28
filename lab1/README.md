@@ -21,5 +21,12 @@ It implements resizing of [picture](pic1.jpg) on billinear interpolation algoryt
 
 ### Result of lab
 
-*placeholder*
+#### Input
 
+![alt tag](pic1.jpg)
+
+#### Output
+
+![alt tag](pic1_bigger.png)
+
+*About picture: Weirdmagedonn starts with Bill Cypher invades to Gravity Falls (from Gravity Falls cartoon by Alex Hirsh, season 2 finalle)*
