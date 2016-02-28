@@ -6,7 +6,7 @@ Implements lab 1 from datamining course.
 
 It implements testing of plain classifier and [One Rule](http://www.saedsayad.com/oner.htm) algorythm. 
 
-The count of data selected to the training data depends on *placeholder text*
+The count of data selected to the training data depends on [MAX_SELECTOR](main.py#L8)
 
 ### File walkthrough
 
