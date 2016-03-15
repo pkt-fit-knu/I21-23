@@ -14,14 +14,23 @@ def main():
         len(img[0][0])
     ), dtype=np.uint32)
 
-    for y_pos in range(len(img) - 1):
-        for x_pos in range(len(img[0]) - 1):
+    # Some generator staff to improve speed and memory usage of running
+    def grange(start=0, end=1):
+        current = start
+        while(True):
+            if current >= end:
+                raise StopIteration()
+            yield current
+            current += 1
+
+    for y_pos in grange(end=len(img) - 1):
+        for x_pos in grange(end=len(img[0]) - 1):
             apper_left = img[y_pos][x_pos]
             apper_right = img[y_pos][x_pos + 1]
             bottom_left = img[y_pos + 1][x_pos]
             bottom_right = img[y_pos + 1][x_pos + 1]
 
-            for i in range(len(img[0][0])):
+            for i in xrange(len(img[0][0])):
                 # First level of interpolation - linear, first row
                 new_img[y_pos * 2 - 1][x_pos * 2 - 1][i] = apper_left[i]
                 new_img[y_pos * 2 - 1][x_pos * 2 + 1][i] = apper_right[i]
