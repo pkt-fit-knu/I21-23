@@ -13,7 +13,10 @@ def main():
 
     # Init storage for data count
     value_type_info = np.iinfo(img[0][0][0])
-    hists = np.zeros((len(img[0][0]), math.trunc(value_type_info.max) + 1))
+    hists = np.zeros((
+        len(img[0][0]),
+        math.trunc(value_type_info.max) + 1
+    ))
 
     # Build histogram
     for line in img:
@@ -23,9 +26,9 @@ def main():
 
     # Display histogram
     imgplot = plt.plot(
-        range(math.trunc(value_type_info.max) + 1), hists[0],
         range(math.trunc(value_type_info.max) + 1), hists[1],
         range(math.trunc(value_type_info.max) + 1), hists[2],
+        range(math.trunc(value_type_info.max) + 1), hists[0],
     )
     plt.show(imgplot)
 
