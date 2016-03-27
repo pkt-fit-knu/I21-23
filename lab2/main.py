@@ -6,9 +6,7 @@ import matplotlib.image as mpimg
 import numpy as np
 import math
 
-
-def main():
-    """Main program method."""
+if __name__ == "__main__":
     img = mpimg.imread('pic1.jpg')
 
     # Init storage for data count
@@ -21,7 +19,7 @@ def main():
     # Build histogram
     for line in img:
         for point in line:
-            for i in xrange(3):
+            for i in range(3):
                 hists[i][point[i]] += 1
 
     # Display histogram
@@ -31,6 +29,3 @@ def main():
         range(math.trunc(value_type_info.max) + 1), hists[0],
     )
     plt.show(imgplot)
-
-if __name__ == "__main__":
-    main()
