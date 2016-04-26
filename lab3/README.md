@@ -5,7 +5,7 @@ Implements lab 2 from image processing course.
 ### How to run
 Since there is some libraries needed to run it, run those steps to run the lab
 ```bash
-virtualenv --clear --prompt="[lab1]" .env
+virtualenv --clear --prompt="[lab3]" .env
 source .env/bin/activate
 pip install -r requirements.txt
 ``` 
