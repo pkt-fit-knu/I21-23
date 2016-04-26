@@ -23,7 +23,7 @@ It makes black and white normalization of [picture](pic1.jpg).
 
 #### Input
 
-![alt tag](pic1_grey.jpg)
+![alt tag](pic1_grey.png)
 
 #### Output
 
