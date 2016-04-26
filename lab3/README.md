@@ -1,6 +1,6 @@
 # Lab 3
 
-Implements lab 2 from image processing course. 
+Implements lab 3 from image processing course. 
 
 ### How to run
 Since there is some libraries needed to run it, run those steps to run the lab
@@ -23,7 +23,7 @@ It makes black and white normalization of [picture](pic1.jpg).
 
 #### Input
 
-![alt tag](pic1.jpg)
+![alt tag](pic1_grey.jpg)
 
 #### Output
 

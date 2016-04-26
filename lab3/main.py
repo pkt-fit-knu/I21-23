@@ -60,20 +60,30 @@ if __name__ == '__main__':
     value_type_info = np.iinfo(image[0][0][0])
     hists = np.zeros((len(image), len(image[0]), 1), dtype=value_type_info)
     print("Grayscaling image...")
-    for i in range(len(image)):
-        for j in range(len(image[i])):
-            hists[i][j] = (
+    i = 0
+    image_len = len(image)
+    while i < image_len:
+        j = 0
+        image_height = len(image[0])
+        while j < image_height:
+            hists[i][j] = math.trunc(
                 image[i][j][0] / 3 + image[i][j][1] / 3 + image[i][j][2] / 3)
+            j += 1
+        i += 1
+    imageio.imwrite("pic1_grey.png", hists)
     print("Done")
     image = hists
     print("Normalizing image...")
     for hist in make_hist(image):
         table = build_normalisation_table(image, hist)
         print("Processing channel {}".format(channel))
-        for i in range(len(image)):
-            for j in range(len(image[i])):
-                # print("{} => {}".format(image[i][j][channel], table[image[i][j][channel]]))
-                image[i][j][channel] = math.trunc(table[image[i][j][channel]])
+        i = 0
+        while i < image_len:
+            j = 0
+            while j < image_height:
+                image[i][j][channel] = table[image[i][j][channel]]
+                j += 1
+            i += 1
         channel += 1
     print("Done")
 
