@@ -25,8 +25,8 @@ The algorythm works pretty awful. It cracks picture while it should make it more
 
 #### Input
 
-![alt tag](pic1_grey.png)
+![alt tag](pic1.png)
 
 #### Output
 
-![alt tag](pic1_norm.png)
+![alt tag](pic1_better.png)
