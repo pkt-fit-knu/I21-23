@@ -25,7 +25,7 @@ The algorythm works pretty awful. It cracks picture while it should make it more
 
 #### Input
 
-![alt tag](pic1.png)
+![alt tag](pic1.jpg)
 
 #### Output
 
