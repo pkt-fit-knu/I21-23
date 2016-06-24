@@ -1,0 +1,34 @@
+containers:
+  base:
+    setup:
+      - !Ubuntu xenial
+      - !UbuntuUniverse
+
+  mongodb:
+    setup:
+      - !Container base
+      - !Sh apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+      - !UbuntuRepo
+        url: http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2
+        suite: multiverse
+        components: []
+      - !Install
+        - mongodb-org
+        - mongodb-org-server
+        - mongodb-org-shell
+        - mongodb-org-mongos
+        - mongodb-org-tools
+      - !EnsureDir /data/db
+    environ:
+      MONGO_ARGS: ""
+    volumes:
+      /data/db: !Tmpfs
+      size: 100M
+      mode: 0o700
+
+commands:
+  mongo: !Command
+    description: Run mongodb server
+    container: mongodb
+    run: mongod $(MONGO_ARGS)
+
